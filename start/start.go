@@ -1,17 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/mmcdole/gofeed"
+)
 
 func main() {
-	for  {
-		fmt.Print("Enter a number: ")
-		var input int
-		count, err := fmt.Scan(&input)
-		if err != nil || count != 1 {
-			fmt.Println("Invalid input, please enter ONE number.")
-		}else{
-			fmt.Printf("You entered: %d", input)
-			break
-		}
+	fp := gofeed.NewParser()
+	feed, _ := fp.ParseURL("https://www.heise.de/rss/heise-atom.xml")
+	for i := range 5 {
+		fmt.Println(feed.Items[i].Title)
+		fmt.Println(feed.Items[i].Link)
+		fmt.Println(feed.Items[i].Description)
 	}
 }
