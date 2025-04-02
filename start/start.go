@@ -6,7 +6,7 @@ import (
 	"github.com/mmcdole/gofeed"
 )
 
-func main() {
+func inner() {
 	fp := gofeed.NewParser()
 	feed, _ := fp.ParseURL("https://www.heise.de/rss/heise-atom.xml")
 	for i := range 5 {
@@ -14,4 +14,8 @@ func main() {
 		fmt.Println(feed.Items[i].Link)
 		fmt.Println(feed.Items[i].Description)
 	}
+}
+
+func main() {
+	Exec()
 }
