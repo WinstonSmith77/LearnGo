@@ -1,8 +1,10 @@
-package main
+package cmd
 
 import (
 	"fmt"
 	"os"
+
+	"github.com/WinstonSmith77/LearnGo/reader"
 
 	"github.com/spf13/cobra"
 )
@@ -20,7 +22,7 @@ var cmdLs = &cobra.Command{
 	Long:  `List first 5 news`,
 	Run: func(cmd *cobra.Command,
 		args []string) {
-		inner()
+		reader.List(10)
 	},
 }
 
